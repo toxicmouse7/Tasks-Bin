@@ -1,4 +1,4 @@
-#include "snake.h"
+#include "snake_functions.h"
 
 void create_game_field()
 {

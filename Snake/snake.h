@@ -27,7 +27,7 @@ void Output_Apple(Apple* apple);
 void create_game_field();
 void Output_Snake(Snake* snake);
 void Remove_Old_Snake(Snake* snake);
-void increase_snake(Snake* snake, char ch);
+void increase_snake(Snake* snake);
 void pullup_snake(Snake* snake);
 void free_snake(Snake* snake);
 void Apple_Collision(Apple* apple, Snake* snake);

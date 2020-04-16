@@ -2,23 +2,15 @@
 
 void Add_Random_Apple(Apple* apple)
 {
-	apple->x = rand() % 40;
-	apple->y = rand() % 20;
-	if (apple->x == 0)
-		apple->x++;
-	if (apple->y == 0)
-		apple->y++;
+	apple->x = (rand() % 39) + 1;
+	apple->y = (rand() % 19) + 1;
 }
 
 void Apple_Collision(Apple* apple, Snake* snake)
 {
-	while (snake != NULL)
+	while (apple->x == snake->x && apple->y == snake->x)
 	{
-		if (snake->x == apple->x)
-			apple->x = rand() % 40;
-		if (snake->y == apple->y)
-			apple->y = rand() % 20;
-		snake = snake->next;
+		Add_Random_Apple(apple);
 	}
 }
 

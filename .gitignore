@@ -53,9 +53,6 @@ dkms.conf
 *.db
 *.opendb
 *.ipch
-*.vcxproj
-*.filters
-*.user
 C-prog/
 *.sln
 .vs/Tasks Bin/v16/.suo

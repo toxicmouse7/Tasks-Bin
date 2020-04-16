@@ -8,7 +8,7 @@ void Add_Random_Apple(Apple* apple)
 
 void Apple_Collision(Apple* apple, Snake* snake)
 {
-	while (apple->x == snake->x && apple->y == snake->x)
+	while (apple->x == snake->x && apple->y == snake->y)
 	{
 		Add_Random_Apple(apple);
 	}

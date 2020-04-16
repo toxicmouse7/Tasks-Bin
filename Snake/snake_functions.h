@@ -1,5 +1,6 @@
 #ifndef INC_GUR
 #include <stdio.h>
+#include <stdlib.h>
 #endif
 
 typedef struct

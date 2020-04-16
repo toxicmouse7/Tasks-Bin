@@ -143,6 +143,7 @@
     <ClCompile Include="snake_functions.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="apple_functions.h" />
     <ClInclude Include="snake.h" />
     <ClInclude Include="snake_functions.h" />
   </ItemGroup>

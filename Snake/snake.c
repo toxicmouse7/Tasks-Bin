@@ -99,6 +99,7 @@ int main()
 		{
 			increase_snake(snake, ch);
 			Add_Random_Apple(apple);
+			Apple_Collision(apple, snake);
 			Output_Apple(apple);
 			score++;
 			if (time > 49)

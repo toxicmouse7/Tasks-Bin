@@ -24,3 +24,10 @@ typedef struct
 void gotoxy(int x, int y);
 void Add_Random_Apple(Apple* apple);
 void Output_Apple(Apple* apple);
+void create_game_field();
+void Output_Snake(Snake* snake);
+void Remove_Old_Snake(Snake* snake);
+void increase_snake(Snake* snake, char ch);
+void pullup_snake(Snake* snake);
+void free_snake(Snake* snake);
+void Apple_Collision(Apple* apple, Snake* snake);

@@ -23,7 +23,8 @@ int main()
 	snake->y = 10;
 	char ch = 'm', ch1 = 'm';
 	int time = 300;
-	char Nickname[21];
+	char Nickname[20];
+	char buffer[50];
 
 	void* handle = GetStdHandle(STD_OUTPUT_HANDLE);
 	CONSOLE_CURSOR_INFO structCursorInfo;
@@ -32,8 +33,8 @@ int main()
 	SetConsoleCursorInfo(handle, &structCursorInfo);
 
 
-	printf("Write your nickname: ");
-	gets(Nickname);
+	printf("Write your nickname(max 20 symbols): ");
+	gets_s(Nickname, 20);
 	system("cls");
 
 	create_game_field();
@@ -119,8 +120,32 @@ int main()
 	}
 	end:
 
-	fopen_s(&f, "scorelist.txt", "a+");
-	fprintf(f, "%s - %d", Nickname, score);
+	fopen_s(&f, "scorelist.txt", "r+");
+	int flag = 0;
+	while (!feof(f))
+	{
+		long g = ftell(f);
+		fgets(buffer, 50, f);
+		int i = strlen(buffer);
+		while (!((int)buffer[i] >= 65 && (int)buffer[i] <= 90) && !((int)buffer[i] >= 97 && (int)buffer[i] <= 122))
+		{
+			i--;
+		}
+		buffer[i + 1] = '\0';
+		if (strcmp(buffer, Nickname) == 0)
+		{
+			fseek(f, g, SEEK_SET);
+			fprintf(f, "%s - %d\n", Nickname, score);
+			flag = 1;
+			break;
+		}
+	}
+	if (flag == 0)
+	{
+		fseek(f, 0, SEEK_END);
+		fprintf("%s - %d\n", Nickname, score);
+	}
+
 	fclose(f);
 	
 	free_snake(snake);

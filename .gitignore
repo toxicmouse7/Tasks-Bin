@@ -58,3 +58,7 @@ dkms.conf
 *.user
 C-prog/
 *.sln
+.vs/Tasks Bin/v16/.suo
+.vs/Tasks Bin/v16/.suo
+*.tlog
+*.log

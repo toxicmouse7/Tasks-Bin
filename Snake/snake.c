@@ -1,21 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <windows.h>
-#include <conio.h>
-
-typedef struct 
-{
-	int x;
-	int y;
-	struct Snake* next;
-	struct Snake* previous;
-} Snake;
-
-typedef struct
-{
-	int x;
-	int y;
-} Apple;
+#include "snake.h"
 
 void gotoxy(int x, int y)
 {
@@ -23,124 +6,6 @@ void gotoxy(int x, int y)
 	coord.X = x;
 	coord.Y = y;
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
-}
-
-void create_game_field()
-{
-	for (int i = 0; i < 40; i++)
-	{
-		gotoxy(i, 0);
-		printf("#");
-		gotoxy(i, 20);
-		printf("#");
-	}
-
-	for (int i = 0; i < 21; i++)
-	{
-		gotoxy(0, i);
-		printf("#");
-		gotoxy(40, i);
-		printf("#");
-	}
-
-}
-
-void Add_Random_Apple(Apple* apple)
-{
-	apple->x = rand() % 40;
-	apple->y = rand() % 20;
-	if (apple->x == 0)
-		apple->x++;
-	if (apple->y == 0)
-		apple->y++;
-}
-
-void Output_Apple(Apple* apple)
-{
-	gotoxy(apple->x, apple->y);
-	printf("@");
-}
-
-void Output_Snake(Snake* snake)
-{
-	while (snake != NULL)
-	{
-		gotoxy(snake->x, snake->y);
-		printf("*");
-		snake = snake->next;
-	}
-}
-
-void Remove_Old_Snake(Snake* snake)
-{
-	while (snake != NULL)
-	{
-		gotoxy(snake->x, snake->y);
-		printf(" ");
-		snake = snake->next;
-	}
-}
-
-void increase_snake(Snake* snake, char ch)
-{
-	Snake* tmp;
-	while (snake->next != NULL)
-		snake = snake->next;
-	tmp = snake;
-	snake->next = (Snake*)malloc(sizeof(Snake));
-	snake = snake->next;
-	snake->next = NULL;
-	snake->previous = tmp;
-	if (ch == 'w')
-	{
-		snake->y = tmp->y + 1;
-		snake->x = tmp->x;
-	}
-	else if (ch == 'a')
-	{
-		snake->y = tmp->y;
-		snake->x = tmp->x + 1;
-	}
-	else if (ch == 's')
-	{
-		snake->y = tmp->y - 1;
-		snake->x = tmp->x;
-	}
-	else if (ch == 'd')
-	{
-		snake->y = tmp->y;
-		snake->x = tmp->x - 1;
-	}
-}
-
-void pullup_snake(Snake* snake)
-{
-	Snake* snake_goes, *tmp;
-	snake_goes = snake;
-
-	while (snake_goes->next != NULL)
-		snake_goes = snake_goes->next;
-
-	while (snake_goes->previous != NULL)
-	{
-		tmp = snake_goes->previous;
-		snake_goes->y = tmp->y;
-		snake_goes->x = tmp->x;
-		snake_goes = snake_goes->previous;
-	}
-}
-
-void free_snake(Snake* snake)
-{
-	while (snake->next != NULL)
-		snake = snake->next;
-
-	while (snake->previous != NULL)
-	{
-		snake = snake->previous;
-		free(snake->next);
-	}
-	free(snake);
 }
 
 int main()
@@ -156,7 +21,7 @@ int main()
 	snake->previous = NULL;
 	snake->x = 20;
 	snake->y = 10;
-	char ch = 'm';
+	char ch = 'm', ch1 = 'm';
 	int time = 300;
 	char Nickname[21];
 
@@ -179,8 +44,10 @@ int main()
 	{
 		if (_kbhit())
 			ch = _getch();
+		if (ch == 'w' || ch == 'a' || ch == 's' || ch == 'd')
+			ch1 = ch;
 
-		switch (ch)
+		switch (ch1)
 		{
 			case 'w': 
 			{

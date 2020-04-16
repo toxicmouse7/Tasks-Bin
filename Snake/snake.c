@@ -52,7 +52,7 @@ int main()
 		{
 			case 'w': 
 			{
-				Remove_Old_Snake(snake);
+				Remove_Snakes_Tail(snake);
 				pullup_snake(snake);
 				snake->y--;
 				Output_Snake(snake);
@@ -61,7 +61,7 @@ int main()
 			}
 			case 'a':
 			{
-				Remove_Old_Snake(snake);
+				Remove_Snakes_Tail(snake);
 				pullup_snake(snake);
 				snake->x--;
 				Output_Snake(snake);
@@ -70,7 +70,7 @@ int main()
 			}
 			case 's':
 			{
-				Remove_Old_Snake(snake);
+				Remove_Snakes_Tail(snake);
 				pullup_snake(snake);
 				snake->y++;
 				Output_Snake(snake);
@@ -79,7 +79,7 @@ int main()
 			}
 			case 'd':
 			{
-				Remove_Old_Snake(snake);
+				Remove_Snakes_Tail(snake);
 				pullup_snake(snake);
 				snake->x++;
 				Output_Snake(snake);

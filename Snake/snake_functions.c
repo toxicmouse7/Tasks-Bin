@@ -2,20 +2,20 @@
 
 void create_game_field()
 {
-	for (int i = 0; i < 40; i++)
+	for (int i = 1; i < 40; i++)
 	{
 		gotoxy(i, 0);
-		printf("#");
+		printf("-");
 		gotoxy(i, 20);
-		printf("#");
+		printf("-");
 	}
 
-	for (int i = 0; i < 21; i++)
+	for (int i = 1; i < 20; i++)
 	{
 		gotoxy(0, i);
-		printf("#");
+		printf("|");
 		gotoxy(40, i);
-		printf("#");
+		printf("|");
 	}
 
 }
@@ -30,14 +30,8 @@ void Output_Snake(Snake* snake)
 	}
 }
 
-void Remove_Old_Snake(Snake* snake)
+void Remove_Snakes_Tail(Snake* snake)
 {
-	/*while (snake != NULL)
-	{
-		gotoxy(snake->x, snake->y);
-		printf(" ");
-		snake = snake->next;
-	}*/
 	while (snake->next != NULL)
 		snake = snake->next;
 	gotoxy(snake->x, snake->y);

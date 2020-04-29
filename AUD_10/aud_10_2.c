@@ -59,6 +59,7 @@ int main(int argc, char* argv[])
         system("pause");
         return 0;
     }
+    else printf("The program is running\n");
 
     //setlocale(LC_ALL, "Russian");
     //HANDLE hProcessSnap;

@@ -9,7 +9,7 @@ int main()
 	HANDLE hf;
 	int i = 0;
 	wchar_t file_type[executables][6];
-	wcscpy_s(file_type[0], 6, L"*.txt");
+	wcscpy_s(file_type[0], 6, L"*.exe");
 	wcscpy_s(file_type[1], 6, L"*.bin");
 	wcscpy_s(file_type[2], 6, L"*.jar");
 	wcscpy_s(file_type[3], 6, L"*.pyc");

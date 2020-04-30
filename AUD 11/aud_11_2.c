@@ -1,44 +1,35 @@
 #include <stdio.h>
 #include <windows.h>
 #include <conio.h>
-#define executables 4
 
 int main()
 {
 	WIN32_FIND_DATA FindFileData;
+	STARTUPINFO info;
+	//HANDLE hand;
+	PROCESS_INFORMATION procinfo;
 	HANDLE hf;
-	int i = 0;
-	wchar_t file_type[executables][6];
-	wcscpy_s(file_type[0], 6, L"*.exe");
-	wcscpy_s(file_type[1], 6, L"*.bin");
-	wcscpy_s(file_type[2], 6, L"*.jar");
-	wcscpy_s(file_type[3], 6, L"*.pyc");
+	DWORD proc_status;
 
-	start:
+	ZeroMemory(&info, sizeof(info));
+	info.cb = sizeof(info);
+	ZeroMemory(&procinfo, sizeof(procinfo));
 
-	hf = FindFirstFile(file_type[i], &FindFileData);
+	hf = FindFirstFile(L"*.*", &FindFileData);
 
 	if (hf != INVALID_HANDLE_VALUE)
 	{
 		do
 		{
-			if (FindFileData.nFileSizeLow > 20)
+			if (CreateProcess(FindFileData.cFileName, NULL, NULL, NULL, FALSE, CREATE_SUSPENDED, NULL, NULL, &info, &procinfo) != 0)
+			{
 				wprintf(L"%s\n", FindFileData.cFileName);
+				TerminateProcess(procinfo.hProcess, 259);
+				CloseHandle(procinfo.hProcess);
+			}
 
 		} while (FindNextFile(hf, &FindFileData) != 0);
 		FindClose(hf);
-		i++;
-		if (i < executables)
-			goto start;
-	}
-	else
-	{
-		if (i < executables)
-		{
-			i++;
-			goto start;
-		}
-		else printf("Nothing else was finded, sorry :C\n");
 	}
 
 	_getch();

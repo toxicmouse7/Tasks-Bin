@@ -6,10 +6,8 @@ int main()
 {
 	WIN32_FIND_DATA FindFileData;
 	STARTUPINFO info;
-	//HANDLE hand;
 	PROCESS_INFORMATION procinfo;
 	HANDLE hf;
-	DWORD proc_status;
 
 	ZeroMemory(&info, sizeof(info));
 	info.cb = sizeof(info);

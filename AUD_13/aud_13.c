@@ -1,14 +1,23 @@
+#define INITGUID
 #include <stdio.h>
 #include <stdlib.h>
 #include <Windows.h>
 #include <VersionHelpers.h>
 #include <SetupAPI.h>
 
+
 int main()
 {
 	HANDLE Handle;
-	Handle = SetupDiGetClassDevs(NULL, NULL, NULL, DIGCF_ALLCLASSES | DIGCF_PRESENT);
+	SP_DEVINFO_DATA DeviceInfoData;
+	ZeroMemory(&DeviceInfoData, sizeof(SP_DEVINFO_DATA));
+	DeviceInfoData.cbSize = sizeof(SP_DEVINFO_DATA);
+	DWORD DeviceIndex = 0;
 
+	Handle = SetupDiGetClassDevs(NULL, NULL, NULL, DIGCF_ALLCLASSES | DIGCF_PRESENT);
+	
+	SetupDiEnumDeviceInfo(Handle, DeviceIndex, &DeviceInfoData);
+	
 	if (!IsWindows7OrGreater())
 	{
 		printf("Come on. It is 2020, but you still using XP? Dude...");

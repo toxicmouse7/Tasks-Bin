@@ -13,11 +13,48 @@ int main()
 	ZeroMemory(&DeviceInfoData, sizeof(SP_DEVINFO_DATA));
 	DeviceInfoData.cbSize = sizeof(SP_DEVINFO_DATA);
 	DWORD DeviceIndex = 0;
+	BYTE PropertyBuffer[1024] = { 0 };
 
 	Handle = SetupDiGetClassDevs(NULL, NULL, NULL, DIGCF_ALLCLASSES | DIGCF_PRESENT);
 	
 	SetupDiEnumDeviceInfo(Handle, DeviceIndex, &DeviceInfoData);
+
+	SetupDiGetDeviceRegistryPropertyW(Handle, &DeviceInfoData, SPDRP_MFG, NULL, PropertyBuffer, 1024, NULL);
+
+	printf("%s\n", (char*)&PropertyBuffer);
+
+	DeviceIndex++;
+
+	SetupDiEnumDeviceInfo(Handle, DeviceIndex, &DeviceInfoData);
 	
+	SetupDiGetDeviceRegistryPropertyW(Handle, &DeviceInfoData, SPDRP_MFG, NULL, &PropertyBuffer, 1024, NULL);
+
+	printf("%s", PropertyBuffer);
+
+	DeviceIndex++;
+
+	SetupDiEnumDeviceInfo(Handle, DeviceIndex, &DeviceInfoData);
+
+	SetupDiGetDeviceRegistryPropertyW(Handle, &DeviceInfoData, SPDRP_MFG, NULL, &PropertyBuffer, 1024, NULL);
+
+	printf("%s", PropertyBuffer);
+
+	DeviceIndex++;
+
+	SetupDiEnumDeviceInfo(Handle, DeviceIndex, &DeviceInfoData);
+
+	SetupDiGetDeviceRegistryPropertyW(Handle, &DeviceInfoData, SPDRP_MFG, NULL, &PropertyBuffer, 1024, NULL);
+
+	printf("%s", PropertyBuffer);
+
+	DeviceIndex++;
+
+	SetupDiEnumDeviceInfo(Handle, DeviceIndex, &DeviceInfoData);
+
+	SetupDiGetDeviceRegistryPropertyW(Handle, &DeviceInfoData, SPDRP_MFG, NULL, &PropertyBuffer, 1024, NULL);
+
+	printf("%s", PropertyBuffer);
+
 	if (!IsWindows7OrGreater())
 	{
 		printf("Come on. It is 2020, but you still using XP? Dude...");

@@ -15,45 +15,17 @@ int main()
 	DWORD DeviceIndex = 0;
 	BYTE PropertyBuffer[1024] = { 0 };
 
-	Handle = SetupDiGetClassDevs(NULL, NULL, NULL, DIGCF_ALLCLASSES | DIGCF_PRESENT);
+	Handle = SetupDiGetClassDevsW(NULL, NULL, NULL, DIGCF_ALLCLASSES | DIGCF_PRESENT);
 	
-	SetupDiEnumDeviceInfo(Handle, DeviceIndex, &DeviceInfoData);
+	while (SetupDiEnumDeviceInfo(Handle, DeviceIndex, &DeviceInfoData))
+	{
 
-	SetupDiGetDeviceRegistryPropertyW(Handle, &DeviceInfoData, SPDRP_MFG, NULL, PropertyBuffer, 1024, NULL);
+		SetupDiGetDeviceRegistryPropertyW(Handle, &DeviceInfoData, SPDRP_MFG, NULL, PropertyBuffer, 1024, NULL);
 
-	printf("%s\n", (char*)&PropertyBuffer);
+		printf("%s\n", (char*)&PropertyBuffer);
 
-	DeviceIndex++;
-
-	SetupDiEnumDeviceInfo(Handle, DeviceIndex, &DeviceInfoData);
-	
-	SetupDiGetDeviceRegistryPropertyW(Handle, &DeviceInfoData, SPDRP_MFG, NULL, &PropertyBuffer, 1024, NULL);
-
-	printf("%s", PropertyBuffer);
-
-	DeviceIndex++;
-
-	SetupDiEnumDeviceInfo(Handle, DeviceIndex, &DeviceInfoData);
-
-	SetupDiGetDeviceRegistryPropertyW(Handle, &DeviceInfoData, SPDRP_MFG, NULL, &PropertyBuffer, 1024, NULL);
-
-	printf("%s", PropertyBuffer);
-
-	DeviceIndex++;
-
-	SetupDiEnumDeviceInfo(Handle, DeviceIndex, &DeviceInfoData);
-
-	SetupDiGetDeviceRegistryPropertyW(Handle, &DeviceInfoData, SPDRP_MFG, NULL, &PropertyBuffer, 1024, NULL);
-
-	printf("%s", PropertyBuffer);
-
-	DeviceIndex++;
-
-	SetupDiEnumDeviceInfo(Handle, DeviceIndex, &DeviceInfoData);
-
-	SetupDiGetDeviceRegistryPropertyW(Handle, &DeviceInfoData, SPDRP_MFG, NULL, &PropertyBuffer, 1024, NULL);
-
-	printf("%s", PropertyBuffer);
+		DeviceIndex++;
+	}
 
 	if (!IsWindows7OrGreater())
 	{

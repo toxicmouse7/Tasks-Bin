@@ -121,7 +121,9 @@ void printMarks(int* marks)
 
 void outputStudent(lpstudent stud)
 {
-	printf("Name: %s\n", stud->name);
+	if (stud->IsInitilized == TRUE)
+	{
+		printf("Name: %s\n", stud->name);
 	printf("Surname: %s\n", stud->surname);
 	printf("Age: %d\n", stud->age);
 	printf("Group: %s\n", stud->group);
@@ -129,6 +131,8 @@ void outputStudent(lpstudent stud)
 	printPhone(stud->phone);
 	printf("Marks: ");
 	printMarks(stud->marks);
+	}
+	else printf("Student isn't initilized!\n");
 }
 
 void outputStudents(lpstudent stud)
@@ -145,7 +149,7 @@ lpstudent deleteBySurname(lpstudent stud)
 {
 	char buffer[256];
 	int i = 0;
-	lpstudent kick = stud;
+	lpstudent kick = stud, head = stud;
 	printf("What person would you like to kick out?\n");
 	gets(buffer);
 	while (stud != NULL)
@@ -156,30 +160,37 @@ lpstudent deleteBySurname(lpstudent stud)
 		kick = stud;
 		stud = stud->next;
 	}
-	if (strcmp(stud->surname, buffer) == 0)
+	if (stud != NULL && strcmp(stud->surname, buffer) == 0)
 	{
 		if (i == 1 && kick->next == NULL)
 		{
 			free(kick);
+			kick = (lpstudent)malloc(sizeof(student));
 			kick->next = NULL;
-			printf("Deleted!");
+			kick->IsInitilized = FALSE;
+			printf("Deleted!\n");
+			return kick;
 		}
-		else if (i == 1 && kick->next != NULL) 
+		else if (i == 1 && kick->next != NULL)
 		{
 			kick = stud->next;
 			free(stud);
-			printf("Deleted!");
+			printf("Deleted!\n");
 			return kick;
 		}
 		else
 		{
 			kick->next = stud->next;
 			free(stud);
-			printf("Deleted!");
+			printf("Deleted!\n");
+			return head;
 		}
 	}
 	else
-		printf("Person doesn't exist!");
+	{
+		printf("Person doesn't exist!\n");
+		return head;
+	}
 }
 
 
@@ -189,8 +200,8 @@ int main()
 	stud->IsInitilized = FALSE;
 	stud->next = NULL;
 	Add_Student(stud, FALSE);
-	Add_Student(stud, FALSE);
-	Add_Student(stud, FALSE);
+	//Add_Student(stud, FALSE);
+	//Add_Student(stud, FALSE);
 	outputStudents(stud);
 	stud = deleteBySurname(stud);
 	outputStudents(stud);

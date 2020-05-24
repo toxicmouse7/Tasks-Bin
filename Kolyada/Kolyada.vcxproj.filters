@@ -15,11 +15,16 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="aud_10_2.c">
+    <ClCompile Include="..\..\..\..\Desktop\kolyada\main (2).c">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="aud_10_1.c">
+    <ClCompile Include="..\..\..\..\Desktop\kolyada\matrix (1).c">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\..\Desktop\kolyada\matrix.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

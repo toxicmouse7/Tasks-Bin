@@ -15,10 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="aud_10_2.c">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="aud_10_1.c">
+    <ClCompile Include="..\C-prog\aud2,1.c">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>

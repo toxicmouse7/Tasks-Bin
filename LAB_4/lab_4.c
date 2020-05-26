@@ -1,4 +1,5 @@
 #include "all_about_names.h"
+#include "list_functions.h"
 
 void Initilize_Student(lpstudent stud)
 {
@@ -193,19 +194,74 @@ lpstudent deleteBySurname(lpstudent stud)
 	}
 }
 
+lpstudent deleteBadStudent(lpstudent stud, BOOL* IsLast)
+{
+	lpstudent kick = stud, head = stud;
+	int i = 0;
+	double average = 0;
+	while (stud != NULL)
+	{
+		i++;
+		for (int j = 0; j < 6; j++)
+			average += stud->marks[j];
+		if ((average / 6) < 4)
+			break;
+		kick = stud;
+		stud = stud->next;
+		average = 0;
+	}
+	if ((average / 6) < 4 && average != 0)
+	{
+		if (i == 1 && kick->next == NULL)
+		{
+			free(kick);
+			kick = (lpstudent)malloc(sizeof(student));
+			kick->next = NULL;
+			kick->IsInitilized = FALSE;
+			*IsLast = TRUE;
+			printf("Deleted!\n");
+			return kick;
+		}
+		else if (i == 1 && kick->next != NULL)
+		{
+			kick = stud->next;
+			free(stud);
+			printf("Deleted!\n");
+			return kick;
+		}
+		else
+		{
+			kick->next = stud->next;
+			free(stud);
+			printf("Deleted!\n");
+			return head;
+		}
+	}
+	else
+	{
+		printf("Bad students have been disconnected!\n");
+		*IsLast = TRUE;
+		return head;
+	}
+}
+
 
 int main()
 {
+	BOOL last = FALSE;
 	lpstudent stud = (lpstudent)malloc(sizeof(student));
 	stud->IsInitilized = FALSE;
 	stud->next = NULL;
 	Add_Student(stud, FALSE);
-	//Add_Student(stud, FALSE);
-	//Add_Student(stud, FALSE);
+	Add_Student(stud, FALSE);
+	Add_Student(stud, FALSE);
+	Add_Student(stud, FALSE);
 	outputStudents(stud);
 	stud = deleteBySurname(stud);
 	outputStudents(stud);
-	
+	while (last != TRUE)
+		stud = deleteBadStudent(stud, &last);
+
 
 	return 0;
 }

@@ -23,5 +23,8 @@
     <ClInclude Include="all_about_names.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
+    <ClInclude Include="list_functions.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

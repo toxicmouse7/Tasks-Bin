@@ -138,11 +138,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="delete functions.c" />
+    <ClCompile Include="file functions.c" />
+    <ClCompile Include="init functions.c" />
     <ClCompile Include="lab_4.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="all_about_names.h" />
     <ClInclude Include="list_functions.h" />
+    <ClInclude Include="output functions.c" />
+    <ClInclude Include="output header.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

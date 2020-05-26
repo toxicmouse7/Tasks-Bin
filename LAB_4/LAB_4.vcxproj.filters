@@ -18,12 +18,27 @@
     <ClCompile Include="lab_4.c">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="delete functions.c">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="init functions.c">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="file functions.c">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="all_about_names.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="list_functions.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="output functions.c">
+      <Filter>Исходные файлы</Filter>
+    </ClInclude>
+    <ClInclude Include="output header.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>

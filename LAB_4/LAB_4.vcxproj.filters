@@ -32,13 +32,19 @@
     <ClInclude Include="all_about_names.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="list_functions.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
     <ClInclude Include="output functions.c">
       <Filter>Исходные файлы</Filter>
     </ClInclude>
     <ClInclude Include="output header.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="delete functions.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="init functions.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="file functions.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>

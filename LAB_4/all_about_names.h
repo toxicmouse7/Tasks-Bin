@@ -1,8 +1,4 @@
 #pragma once
-#include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
-#include <string.h>
 #include <Windows.h>
 
 const char* names[] = { "Alexey", "Smith", "Jhonson", "Williams", "Jones", "Brown", "Davis", "Miller", "Willson", "Moore", "Taylor" };

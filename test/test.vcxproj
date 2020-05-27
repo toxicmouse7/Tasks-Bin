@@ -20,8 +20,8 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
-    <ProjectGuid>{EB40C808-1F8C-4BDA-B874-D63BF40459F3}</ProjectGuid>
-    <RootNamespace>LAB4</RootNamespace>
+    <ProjectGuid>{5932F99F-917B-4153-88BB-590997EBC742}</ProjectGuid>
+    <RootNamespace>test</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -138,18 +138,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="delete functions.c" />
-    <ClCompile Include="file functions.c" />
-    <ClCompile Include="init functions.c" />
-    <ClCompile Include="lab_4.c" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="all_about_names.h" />
-    <ClInclude Include="delete functions.h" />
-    <ClInclude Include="file functions.h" />
-    <ClInclude Include="init functions.h" />
-    <ClInclude Include="output functions.c" />
-    <ClInclude Include="output header.h" />
+    <ClCompile Include="Source.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

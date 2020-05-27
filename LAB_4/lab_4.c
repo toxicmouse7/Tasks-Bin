@@ -1,5 +1,11 @@
-#include "all_about_names.h"
-#include "list_functions.h"
+#include "output header.h"
+#include "delete functions.h"
+#include "init functions.h"
+#include "file functions.h"
+#define OUT
+#define DEL
+#define INIT
+#define FF
 
 int main()
 {
@@ -9,15 +15,6 @@ int main()
 	lpstudent stud = (lpstudent)malloc(sizeof(student));
 	stud->IsInitilized = FALSE;
 	stud->next = NULL;
-	Add_Student(stud, FALSE);
-	Add_Student(stud, FALSE);
-	Add_Student(stud, FALSE);
-	Add_Student(stud, FALSE);
-	outputStudents(stud);
-	stud = deleteBySurname(stud);
-	outputStudents(stud);
-	while (last != TRUE)
-		stud = deleteBadStudent(stud, &last);
 
 
 	return 0;

@@ -1,8 +1,11 @@
-#include "all_about_names.h"
+#ifndef FF
+#define FF
+#include "file functions.h"
+#endif
 
 void loadFromFileTXT(lpstudent stud, FILE* file)
 {
-	lpstudent avoid;
+	lpstudent avoid = NULL;
 	if (stud->IsInitilized == TRUE)
 	{
 		printf("Your list is already initilized!\n");
@@ -31,14 +34,14 @@ void loadFromFileTXT(lpstudent stud, FILE* file)
 
 		for (int i = 1; i < 11; i++)
 		{
-			fscanf(file, "%d", &stud->phone[i]);
+			fscanf_s(file, "%d", &stud->phone[i]);
 			fseek(file, 1, SEEK_CUR);
 		}
 
 		stud->marks = (int*)malloc(6 * sizeof(int));
 		for (int i = 0; i < 6; i++)
 		{
-			fscanf(file, "%d", &stud->marks[i]);
+			fscanf_s(file, "%d", &stud->marks[i]);
 			fseek(file, 1, SEEK_CUR);
 		}
 
@@ -47,13 +50,16 @@ void loadFromFileTXT(lpstudent stud, FILE* file)
 		avoid = stud;
 		stud = stud->next;
 	}
-	free(avoid->next);
-	avoid->next = NULL;
+	if (avoid != NULL && avoid->next != NULL)
+	{
+		free(avoid->next);
+		avoid->next = NULL;
+	}
 }
 
 void loadFromFileDAT(lpstudent stud, FILE* file)
 {
-	lpstudent avoid;
+	lpstudent avoid = NULL;
 	if (stud->IsInitilized == TRUE)
 	{
 		printf("Your list is already initilized!\n");
@@ -91,6 +97,9 @@ void loadFromFileDAT(lpstudent stud, FILE* file)
 		avoid = stud;
 		stud = stud->next;
 	}
-	free(avoid->next);
-	avoid->next = NULL;
+	if (avoid != NULL && avoid->next != NULL)
+	{
+		free(avoid->next);
+		avoid->next = NULL;
+	}
 }

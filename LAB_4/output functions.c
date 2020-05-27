@@ -1,3 +1,8 @@
+#ifndef OUT
+#define OUT
+#include "output header.h"
+#endif
+
 void printPhone(int mass[11])
 {
 	printf("+");
@@ -53,7 +58,7 @@ void outputSuccesfulStudents(lpstudent stud)
 	if (stud->IsInitilized == FALSE)
 	{
 		printf("There are no students in your list\n");
-		return 8;
+		return;
 	}
 
 	double average = 0;
@@ -73,7 +78,7 @@ void outputMates(lpstudent stud)
 	if (stud->IsInitilized == FALSE)
 	{
 		printf("There are no students in your list\n");
-		return 9;
+		return;
 	}
 
 	char group[256];
@@ -98,7 +103,7 @@ void outputBySurname(lpstudent stud)
 	if (stud->IsInitilized == FALSE)
 	{
 		printf("There are no students in your list\n");
-		return 9;
+		return;
 	}
 
 	char surname[256];

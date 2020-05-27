@@ -1,3 +1,8 @@
+#ifndef INIT
+#define INIT
+#include "init functions.h"
+#endif
+
 void Initilize_Student(lpstudent stud)
 {
 	srand(time(NULL));

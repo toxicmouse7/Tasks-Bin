@@ -1,4 +1,7 @@
-#include "all_about_names.h"
+#ifndef DEL
+#define DEL
+#include "delete functions.h"
+#endif
 
 lpstudent deleteBySurname(lpstudent stud)
 {

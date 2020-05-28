@@ -6,7 +6,7 @@
 #include <stdlib.h>
 #endif
 
-//void outputStudents(lpstudent Head);
+void outputStudents(lpstudent Head);
 void outputStudent(lpstudent Head);
 void printMarks(int* marks);
 void printPhone(int mass[11]);

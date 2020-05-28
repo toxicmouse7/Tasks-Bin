@@ -15,6 +15,8 @@ int main()
 	lpstudent stud = (lpstudent)malloc(sizeof(student));
 	stud->IsInitilized = FALSE;
 	stud->next = NULL;
+	Add_Student(stud, FALSE);
+	outputStudents(stud);
 
 
 	return 0;

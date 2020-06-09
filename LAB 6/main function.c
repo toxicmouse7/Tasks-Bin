@@ -1,7 +1,7 @@
 #include <Windows.h>
 #include "variables.h"
 
-int CheckNewPos(COORD* pos)
+int CheckNewPosistion(COORD* pos)
 {
 	if (pos->X == -1 || pos->X == a)
 	{
@@ -38,7 +38,7 @@ void changPos(COORD* Pos, int step)
 		Pos->Y += 0;
 	}
 
-	if (CheckNewPos(Pos))
+	if (CheckNewPosition(Pos))
 	{
 		if (step == 1)
 		{

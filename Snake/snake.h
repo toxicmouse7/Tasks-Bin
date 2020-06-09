@@ -7,19 +7,23 @@
 #include <string.h>
 #endif
 
-typedef struct
+struct snake
 {
 	int x;
 	int y;
-	struct Snake* next;
-	struct Snake* previous;
-} Snake;
+	struct snake* next;
+	struct snake* previous;
+};
 
-typedef struct
+typedef struct snake Snake;
+
+struct apple
 {
 	int x;
 	int y;
-} Apple;
+};
+
+typedef struct apple Apple;
 
 void gotoxy(int x, int y);
 void Add_Random_Apple(Apple* apple);

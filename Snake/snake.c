@@ -97,7 +97,7 @@ int main()
 
 		if (snake->x == apple->x && snake->y == apple->y)
 		{
-			increase_snake(snake, ch);
+			increase_snake(snake);
 			Add_Random_Apple(apple);
 			Apple_Collision(apple, snake);
 			Output_Apple(apple);

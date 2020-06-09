@@ -84,7 +84,7 @@ void outputMates(lpstudent stud)
 	char group[256];
 	int count = 0;
 	printf("From which group would you like to see students?\n");
-	gets_s(group);
+	gets_s(group, 256);
 	while (stud != NULL)
 	{
 		if (strcmp(group, stud->group) == NULL);
@@ -109,7 +109,7 @@ void outputBySurname(lpstudent stud)
 	char surname[256];
 	int count = 0, correct = 0;
 	printf("With which surname would you like to see students?\n");
-	gets_s(surname);
+	gets_s(surname, 256);
 	while (stud != NULL)
 	{
 		if (strlen(surname) < strlen(stud->surname))

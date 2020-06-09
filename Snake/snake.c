@@ -22,7 +22,7 @@ int main()
 	snake->x = 20;
 	snake->y = 10;
 	char ch = 'm', ch1 = 'm';
-	int time = 300;
+	int time = 50;
 	char Nickname[20];
 	char buffer[50];
 
@@ -102,8 +102,8 @@ int main()
 			Apple_Collision(apple, snake);
 			Output_Apple(apple);
 			score++;
-			if (time > 49)
-				time -= 10;
+			/*if (time > 49)
+				time -= 10;*/
 		}
 
 		snake_go = snake;

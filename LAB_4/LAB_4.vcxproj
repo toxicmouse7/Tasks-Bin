@@ -148,7 +148,9 @@
     <ClInclude Include="delete functions.h" />
     <ClInclude Include="file functions.h" />
     <ClInclude Include="init functions.h" />
-    <ClInclude Include="output functions.c" />
+    <ClCompile Include="output functions.c">
+      <FileType>CppCode</FileType>
+    </ClCompile>
     <ClInclude Include="output header.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -21,7 +21,7 @@ int main()
 	while (TRUE)
 	{
 		system("cls");
-		printf("1. Add student randomly\n2. Add student by hands\n3. Output students\n4. Output succeful students\n5. Ouput mates\n6.Find and output by surname\n");
+		printf("1. Add student randomly\n2. Add student by hands\n3. Output students\n4. Output succeful students\n5. Ouput mates\n6. Find and output by surname\n7. Delete by surname\n8. Delete unsucceful students\n9. Load list from TXT file\n0. Next page\n");
 		ch = _getch();
 		switch (ch)
 		{
@@ -88,6 +88,8 @@ int main()
 		}
 		case '0':
 		{
+			system("cls");
+			printf("1. Load list from dat file\n2. Previous page\n");
 			ch = _getch();
 			switch (ch)
 			{
@@ -98,9 +100,13 @@ int main()
 					loadFromFileDAT(stud, dat);
 				else printf("File doesn't exist or you don't have permissions for access\n");
 				if (err == 0)
-					fclose(file);
+					fclose(dat);
+				break;
 			}
+			case '2': break;
+			default: exit(9);
 			}
+			break;
 		}
 		default: exit(9);
 		}

@@ -45,6 +45,7 @@ void outputStudent(lpstudent stud)
 
 void outputStudents(lpstudent stud)
 {
+	system("cls");
 	while (stud != NULL)
 	{
 		outputStudent(stud);
@@ -81,13 +82,13 @@ void outputMates(lpstudent stud)
 		return;
 	}
 
-	char group[256];
+	char group[20];
 	int count = 0;
 	printf("From which group would you like to see students?\n");
-	gets_s(group, 256);
+	gets_s(group, 20);
 	while (stud != NULL)
 	{
-		if (strcmp(group, stud->group) == NULL);
+		if (strcmp(group, stud->group) == 0)
 		{
 			count++;
 			outputStudent(stud);

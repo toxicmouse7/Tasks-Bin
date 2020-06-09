@@ -54,6 +54,13 @@ lpstudent deleteBySurname(lpstudent stud)
 lpstudent deleteBadStudent(lpstudent stud, BOOL* IsLast)
 {
 	lpstudent kick = stud, head = stud;
+
+	if (stud->IsInitilized == FALSE)
+	{
+		printf("Students aren't initilized\n");
+		return head;
+	}
+
 	int i = 0;
 	double average = 0;
 	while (stud != NULL)

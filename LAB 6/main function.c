@@ -38,7 +38,7 @@ void changPos(COORD* Pos, int step)
 		Pos->Y += 0;
 	}
 
-	if (CheckNewPosition(Pos))
+	if (CheckNewPosistion(Pos))
 	{
 		if (step == 1)
 		{

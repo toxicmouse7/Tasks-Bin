@@ -73,7 +73,8 @@ case WM_COMMAND:
                     x + 10 * i, 78 + 13 * j, 10, 13, hwnd, 0, hwnd, NULL);
         }
 
-
+        HBRUSH WhiteBrush = CreateSolidBrush(RGB(255, 255, 255));
+        SetClassLongW(hwnd, GCLP_HBRBACKGROUND, (LONG)WhiteBrush);
 
         COORD StartPos;
 
@@ -81,7 +82,7 @@ case WM_COMMAND:
         int kol = 0;
         for (int i = 0; i < a; i++)
             for (int j = 0; j < a; j++)
-                SetWindowText(m[i][j], L"*");
+               // SetWindowText(m[i][j], L"*");
         StartPos.X = rand() % a;
         StartPos.Y = rand() % a;
         SetWindowText(m[StartPos.X][StartPos.Y], L" ");
@@ -99,7 +100,7 @@ case WM_COMMAND:
         for (int i = 0; i < a; i++)
             free(m[i]);
         free(m);
-
+        Sleep(3000);
         break;
     }
     }

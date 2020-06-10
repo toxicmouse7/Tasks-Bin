@@ -11,7 +11,7 @@ void gotoxy(int x, int y)
 int main()
 {
 	system("title Snake");
-	FILE* f;
+	FILE* f, * temp;
 	Snake* snake = (Snake*)malloc(sizeof(Snake));
 	Snake* snake_go;
 	Snake* tmp;
@@ -22,7 +22,7 @@ int main()
 	snake->x = 20;
 	snake->y = 10;
 	char ch = 'm', ch1 = 'm';
-	int time = 50;
+	int time = 270;
 	char Nickname[20];
 	char buffer[50];
 
@@ -50,42 +50,42 @@ int main()
 
 		switch (ch1)
 		{
-			case 'w': 
-			{
-				Remove_Snakes_Tail(snake);
-				pullup_snake(snake);
-				snake->y--;
-				Output_Snake(snake);
-				Sleep(time);
-				break;
-			}
-			case 'a':
-			{
-				Remove_Snakes_Tail(snake);
-				pullup_snake(snake);
-				snake->x--;
-				Output_Snake(snake);
-				Sleep(time);
-				break;
-			}
-			case 's':
-			{
-				Remove_Snakes_Tail(snake);
-				pullup_snake(snake);
-				snake->y++;
-				Output_Snake(snake);
-				Sleep(time);
-				break;
-			}
-			case 'd':
-			{
-				Remove_Snakes_Tail(snake);
-				pullup_snake(snake);
-				snake->x++;
-				Output_Snake(snake);
-				Sleep(time);
-				break;
-			}
+		case 'w':
+		{
+			Remove_Snakes_Tail(snake);
+			pullup_snake(snake);
+			snake->y--;
+			Output_Snake(snake);
+			Sleep(time);
+			break;
+		}
+		case 'a':
+		{
+			Remove_Snakes_Tail(snake);
+			pullup_snake(snake);
+			snake->x--;
+			Output_Snake(snake);
+			Sleep(time);
+			break;
+		}
+		case 's':
+		{
+			Remove_Snakes_Tail(snake);
+			pullup_snake(snake);
+			snake->y++;
+			Output_Snake(snake);
+			Sleep(time);
+			break;
+		}
+		case 'd':
+		{
+			Remove_Snakes_Tail(snake);
+			pullup_snake(snake);
+			snake->x++;
+			Output_Snake(snake);
+			Sleep(time);
+			break;
+		}
 		}
 
 		if (snake->x > 39 || snake->x < 1 || snake->y < 1 || snake->y > 19)
@@ -102,8 +102,8 @@ int main()
 			Apple_Collision(apple, snake);
 			Output_Apple(apple);
 			score++;
-			/*if (time > 49)
-				time -= 10;*/
+			if (time > 49)
+				time -= 10;
 		}
 
 		snake_go = snake;
@@ -119,35 +119,35 @@ int main()
 		}
 
 	}
-	end:
+end:
 
 	fopen_s(&f, "scorelist.txt", "r+");
-	int flag = 0;
+	int count = 0;
 	while (!feof(f))
 	{
-		long g = ftell(f);
 		fgets(buffer, 50, f);
-		int i = strlen(buffer);
-		while (!((int)buffer[i] >= 65 && (int)buffer[i] <= 90) && !((int)buffer[i] >= 97 && (int)buffer[i] <= 122))
-		{
-			i--;
-		}
-		buffer[i + 1] = '\0';
-		if (strcmp(buffer, Nickname) == 0)
-		{
-			fseek(f, g, SEEK_SET);
-			fprintf(f, "%s - %d\n", Nickname, score);
-			flag = 1;
-			break;
-		}
+		count++;
 	}
-	if (flag == 0)
+	fseek(f, 0, SEEK_SET);
+	if (count < 11)
 	{
-		fseek(f, 0, SEEK_END);
-		fprintf("%s - %d\n", Nickname, score);
+		fprintf(f, "%s - %d\n", Nickname, score);
+		fclose(f);
 	}
-
-	fclose(f);
+	else
+	{
+		fopen_s(&temp, "temp.txt", "w");
+		fprintf(f, "%s - %d\n", Nickname, score);
+		for (int i = 0; i < 10; i++)
+		{
+			fgets(buffer, 50, f);
+			fputs(buffer, temp);
+		}
+		fclose(temp);
+		fclose(f);
+		remove("scorelist.txt");
+		rename("temp.txt", "scorelist.txt");
+	}
 	
 	free_snake(snake);
 	free(apple);
